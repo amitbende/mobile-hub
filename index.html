@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Hub - Your Ultimate Electronics Destination</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f1f3f6;
+            color: #212121;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(to right, #2874f0, #1e5cd6);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff6f00;
+        }
+
+        /* Hero Section with Carousel */
+        .hero {
+            background: linear-gradient(45deg, #2874f0, #ff6f00);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('hero-bg-pattern.jpg') repeat;
+            opacity: 0.1;
+        }
+
+        .hero h2 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+        }
+
+        .hero .cta-button {
+            background-color: #ff6f00;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .hero .cta-button:hover {
+            background-color: #e65c00;
+        }
+
+        /* Carousel */
+        .carousel {
+            max-width: 800px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            text-align: center;
+        }
+
+        .carousel-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .carousel-item h3 {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .carousel-item p {
+            font-size: 1em;
+            color: white;
+        }
+
+        .carousel-prev, .carousel-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .carousel-prev {
+            left: 10px;
+        }
+
+        .carousel-next {
+            right: 10px;
+        }
+
+        /* Offers Section */
+        .offers {
+            background-color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .offers h2 {
+            font-size: 2.2em;
+            color: #ff6f00;
+            margin-bottom: 20px;
+        }
+
+        .offer-banner {
+            background: linear-gradient(to right, #2874f0, #1e5cd6);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2em;
+        }
+
+        /* Product Section */
+        .products {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .products h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #ff6f00;
+            text-align: center;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            color: #212121;
+        }
+
+        .product-card p {
+            color: #555;
+            font-size: 1em;
+            line-height: 1.5;
+        }
+
+        /* Random Products Section */
+        .random-products {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .random-products h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #ff6f00;
+            text-align: center;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #f9f9f9;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 2.5em;
+            color: #ff6f00;
+            margin-bottom: 30px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-card h4 {
+            color: #2874f0;
+            font-size: 1.1em;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(to right, #2874f0, #1e5cd6);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .contact a {
+            color: #ff6f00;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #212121;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 1em;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            nav {
+                margin-top: 15px;
+            }
+
+            .hero h2 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            .product-grid, .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .offer-banner {
+                font-size: 1em;
+                padding: 15px;
+            }
+
+            .carousel {
+                max-width: 100%;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Mobile Hub</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#offers">Offers</a>
+            <a href="#products">Products</a>
+            <a href="#random-products">Accessories</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h2>Welcome to Mobile Hub</h2>
+        <p>Your trusted electronics store in Nagpur, offering the latest in mobiles, TVs, home appliances, and accessories. Shop with confidence at Orange City Square!</p>
+        <div class="carousel">
+            <div class="carousel-container">
+                <div class="carousel-item">
+                    <img src="carousel-smartphone.jpg" alt="Featured Smartphone">
+                    <h3>Latest Smartphones</h3>
+                    <p>Grab the newest iPhone or Android at unbeatable prices!</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="carousel-smartphone-co.jpg" alt="Featured TV">
+                    <h3>Smart TVs</h3>
+                    <p>Experience 4K entertainment with our top-brand TVs!</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="carousel-watch.jpg" alt="Featured Smart Watch">
+                    <h3>Smart Watches</h3>
+                    <p>Stay connected with stylish smartwatches!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="offers" id="offers">
+        <h2>Exclusive Offers</h2>
+        <div class="offer-banner">
+            <p>🎉 Get up to 20% off on Smartphones & Accessories! Limited-time offer, visit us today! 🎉</p>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <h2>Our Premium Products</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="smartphone-placeholder.jpg" alt="Smartphones">
+                <h3>Smartphones</h3>
+                <p>Discover the latest Android and iPhone models from top brands like Apple, Samsung, OnePlus, and Xiaomi. Enjoy cutting-edge technology, stunning displays, and powerful performance for all your needs.</p>
+            </div>
+            <div class="product-card">
+                <img src="tablet-placeholder.jpg" alt="Tablets & iPads">
+                <h3>Tablets & iPads</h3>
+                <p>Explore our range of tablets and iPads, perfect for work, gaming, or streaming. Featuring high-resolution screens and long battery life from brands like Apple and Samsung.</p>
+            </div>
+            <div class="product-card">
+                <img src="tv-placeholder.jpg" alt="Televisions">
+                <h3>Televisions</h3>
+                <p>Transform your home entertainment with our smart TVs. Enjoy 4K resolution, vibrant colors, and smart features from brands like Sony, LG, and Samsung.</p>
+            </div>
+            <div class="product-card">
+                <img src="watch-placeholder.jpg" alt="Smart Watches">
+                <h3>Smart Watches</h3>
+                <p>Stay connected and track your fitness with stylish smartwatches from Apple, Samsung, and Fitbit. Sleek designs with advanced health monitoring features.</p>
+            </div>
+            <div class="product-card">
+                <img src="ac-placeholder.jpg" alt="Air Conditioners">
+                <h3>Air Conditioners</h3>
+                <p>Beat the heat with our energy-efficient ACs from brands like Daikin, Voltas, and LG. Fast cooling, low power consumption, and durable performance.</p>
+            </div>
+            <div class="product-card">
+                <img src="fridge-placeholder.jpg" alt="Refrigerators">
+                <h3>Refrigerators</h3>
+                <p>Keep your food fresh with our range of refrigerators. Single-door, double-door, and smart fridges from Whirlpool, Samsung, and Godrej.</p>
+            </div>
+            <div class="product-card">
+                <img src="washing-machine-placeholder.jpg" alt="Washing Machines">
+                <h3>Washing Machines</h3>
+                <p>Simplify laundry with our efficient washing machines. Front-load, top-load, and semi-automatic models from Bosch, LG, and IFB.</p>
+            </div>
+            <div class="product-card">
+                <img src="laptop-placeholder.jpg" alt="Laptops">
+                <h3>Laptops</h3>
+                <p>Power up your productivity with our laptops for work, gaming, and creativity. Featuring brands like Dell, HP, Lenovo, and Apple.</p>
+            </div>
+            <div class="product-card">
+                <img src="accessories-placeholder.jpg" alt="Accessories">
+                <h3>Mobile & Laptop Accessories</h3>
+                <p>Complete your tech setup with our range of accessories: chargers, earphones, cases, screen protectors, and more from trusted brands.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="random-products" id="random-products">
+        <h2>Explore More Accessories</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="earphones-placeholder.jpg" alt="Wireless Earphones">
+                <h3>Wireless Earphones</h3>
+                <p>Immerse yourself in music with high-quality wireless earphones from brands like JBL, Sony, and Boat.</p>
+            </div>
+            <div class="product-card">
+                <img src="powerbank-placeholder.jpg" alt="Power Banks">
+                <h3>Power Banks</h3>
+                <p>Stay charged on the go with our compact and high-capacity power banks from Mi, Anker, and more.</p>
+            </div>
+            <div class="product-card">
+                <img src="smartbulb-placeholder.jpg" alt="Smart Bulbs">
+                <h3>Smart Bulbs</h3>
+                <p>Light up your home with smart LED bulbs. Control colors and brightness via your phone!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p>"Mobile Hub has the best collection of smartphones in Nagpur! The staff is super helpful, and I got a great deal on my iPhone."</p>
+                <h4>- Priya Sharma</h4>
+            </div>
+            <div class="testimonial-card">
+                <p>"I bought a smart TV and a washing machine from Mobile Hub. Excellent service and top-notch products!"</p>
+                <h4>- Rahul Deshmukh</h4>
+            </div>
+            <div class="testimonial-card">
+                <p>"The accessories here are affordable and high-quality. I always come back for my tech needs!"</p>
+                <h4>- Sneha Patil</h4>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <p><strong>Owner:</strong> Arpit Bandu Bende</p>
+        <p><strong>Address:</strong> Orange City Square, Nagpur, Maharashtra, India</p>
+        <p><strong>Contact:</strong> <a href="tel:+918817724550">+91 8817724550</a></p>
+        <p><strong>Email:</strong> <a href="mailto:info@mobilehub.com">info@mobilehub.com</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Mobile Hub. All rights reserved.</p>
+        <p>Visit us at Orange City Square, Nagpur, for the best electronics shopping experience!</p>
+    </footer>
+
+    <script>
+        const carouselContainer = document.querySelector('.carousel-container');
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        const prevButton = document.querySelector('.carousel-prev');
+        const nextButton = document.querySelector('.carousel-next');
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            if (index >= carouselItems.length) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = carouselItems.length - 1;
+            } else {
+                currentIndex = index;
+            }
+            carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        prevButton.addEventListener('click', () => {
+            showSlide(currentIndex - 1);
+        });
+
+        nextButton.addEventListener('click', () => {
+            showSlide(currentIndex + 1);
+        });
+
+        // Auto-slide every 5 seconds
+        setInterval(() => {
+            showSlide(currentIndex + 1);
+        }, 5000);
+    </script>
+</body>
+</html>
